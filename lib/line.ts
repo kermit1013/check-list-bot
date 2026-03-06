@@ -2,12 +2,13 @@
 // LINE Messaging API helpers
 
 const CHANNEL_ACCESS_TOKEN = process.env.LINE_CHANNEL_ACCESS_TOKEN!;
-const USER_ID = process.env.LINE_USER_ID!;
+// LINE_TARGET_ID 可以是個人 User ID（U 開頭）或群組 Group ID（C 開頭）
+const TARGET_ID = process.env.LINE_TARGET_ID!;
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL!;
 
 export async function sendLineMessage(text: string): Promise<void> {
   const body = {
-    to: USER_ID,
+    to: TARGET_ID,
     messages: [
       {
         type: "text",
