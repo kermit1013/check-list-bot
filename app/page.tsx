@@ -160,6 +160,20 @@ export default function HomePage() {
       .catch(() => setChecklist(getEmptyChecklist(date)));
   }, []);
 
+  // Scroll to anchor after checklist has loaded and DOM is rendered
+  useEffect(() => {
+    if (!checklist) return;
+    const hash = window.location.hash; // e.g. "#lunch_pre"
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    // Small delay ensures the section DOM nodes are fully painted
+    const timer = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [checklist]);
+
   // Debounced save
   const saveToServer = useCallback(
     (updated: DailyChecklist) => {
