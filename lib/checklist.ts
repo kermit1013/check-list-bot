@@ -94,6 +94,7 @@ export const TASK_GROUPS: TaskGroup[] = [
     tasks: [
       { id: "dpost_fiber", label: "膳食纖維 ＋ 蛋白牛奶" },
       { id: "dpost_tcm1", label: "中藥消腫" },
+      { id: "dpost_tcm2", label: "中藥粉" },
       { id: "dpost_nose", label: "溫水洗鼻子" },
       {
         id: "dpost_medicine",

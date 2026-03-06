@@ -293,6 +293,7 @@ export function msg5pm(): object {
       sectionLabel("飯後", c),
       taskItem("膳食纖維 ＋ 蛋白牛奶", c),
       taskItem("中藥消腫", c),
+      taskItem("中藥粉", c),
       taskItem("溫水洗鼻子", c),
       taskItem("西藥 ＋ 保健食品", c, "一小時後"),
     ],
