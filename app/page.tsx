@@ -252,7 +252,12 @@ export default function HomePage() {
         {TASK_GROUPS.map((group, i) => (
           <div
             key={group.id}
-            style={{ animation: `fadeInUp 0.4s ease both`, animationDelay: `${i * 60}ms` }}
+            id={group.id}
+            style={{
+              scrollMarginTop: "130px", // offset for sticky header
+              animation: `fadeInUp 0.4s ease both`,
+              animationDelay: `${i * 60}ms`,
+            }}
           >
             <GroupCard
               group={group}
