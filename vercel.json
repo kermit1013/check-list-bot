@@ -1,0 +1,28 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron?job=8am",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron?job=9am",
+      "schedule": "0 1 * * *"
+    },
+    {
+      "path": "/api/cron?job=10am",
+      "schedule": "0 2 * * *"
+    },
+    {
+      "path": "/api/cron?job=12pm",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron?job=5pm",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron?job=8pm",
+      "schedule": "0 12 * * *"
+    }
+  ]
+}
