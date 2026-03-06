@@ -138,7 +138,32 @@ export default function HomePage() {
   const [lastSaved, setLastSaved] = useState<string | null>(null);
   const [dateDisplay, setDateDisplay] = useState("");
   const [todayDate, setTodayDate] = useState("");
+  const [exporting, setExporting] = useState(false);
   const inputTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleExport = useCallback(async (days: number = 30) => {
+    setExporting(true);
+    try {
+      const res = await fetch(`/api/export?days=${days}`);
+      if (!res.ok) throw new Error("匯出失敗");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      const cd = res.headers.get("content-disposition") ?? "";
+      const match = cd.match(/filename="([^"]+)"/);
+      a.download = match ? match[1] : "blood-records.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert("匯出失敗，請稍後再試");
+    } finally {
+      setExporting(false);
+    }
+  }, []);
 
   // Load checklist from API
   useEffect(() => {
@@ -245,6 +270,15 @@ export default function HomePage() {
             {!saving && lastSaved && (
               <span className="save-badge save-badge--saved">✓ {lastSaved}</span>
             )}
+            <button
+              className={`export-btn ${exporting ? "export-btn--loading" : ""}`}
+              onClick={() => handleExport(30)}
+              disabled={exporting}
+              title="匯出近 30 天血壓血糖（CSV）"
+            >
+              {exporting ? "⏳" : ""}
+              <span>{exporting ? "匯出中" : "匯出"}</span>
+            </button>
           </div>
         </div>
 
@@ -545,6 +579,40 @@ export default function HomePage() {
         }
         .task-input::placeholder {
           color: var(--text-muted);
+        }
+
+        /* Export Button */
+        .export-btn {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 5px 12px;
+          font-size: 12px;
+          font-weight: 600;
+          font-family: inherit;
+          color: #a78bfa;
+          background: rgba(139,92,246,0.12);
+          border: 1px solid rgba(139,92,246,0.35);
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+        }
+        .export-btn:hover:not(:disabled) {
+          background: rgba(139,92,246,0.22);
+          border-color: rgba(139,92,246,0.6);
+          color: #c4b5fd;
+        }
+        .export-btn:disabled {
+          opacity: 0.6;
+          cursor: not-allowed;
+        }
+        .export-btn--loading span {
+          animation: pulse 1s ease infinite;
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
         }
 
         /* Footer */
