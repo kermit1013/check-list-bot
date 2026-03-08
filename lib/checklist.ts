@@ -69,6 +69,7 @@ export const TASK_GROUPS: TaskGroup[] = [
     tasks: [
       { id: "lp_inhaler", label: "吸氣喘藥 ＋ 喝水" },
       { id: "lp_jelly", label: "護胃果凍" },
+      { id: "lp_brain", label: "腦得生養腦散" },
     ],
   },
   {
@@ -86,6 +87,7 @@ export const TASK_GROUPS: TaskGroup[] = [
       { id: "dp_inhaler", label: "吸氣喘藥 ＋ 喝水" },
       { id: "dp_insulin", label: "打胰島素" },
       { id: "dp_probiotic", label: "益生菌" },
+      { id: "dp_brain", label: "腦得生養腦散" },
     ],
   },
   {
