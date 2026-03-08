@@ -47,6 +47,7 @@ export const TASK_GROUPS: TaskGroup[] = [
       { id: "mp_jelly", label: "護胃果凍 ＋ 益生菌" },
       { id: "mp_stomach", label: "胃藥" },
       { id: "mp_bittermelon", label: "苦瓜生態" },
+      { id: "mp_brain", label: "腦得生養腦散" },
     ],
   },
   {
@@ -55,7 +56,6 @@ export const TASK_GROUPS: TaskGroup[] = [
     tasks: [
       { id: "mpost_fiber", label: "膳食纖維 ＋ 蛋白牛奶" },
       { id: "mpost_tcm1", label: "中藥壯骨" },
-      { id: "mpost_tcm2", label: "中藥粉" },
       {
         id: "mpost_medicine",
         label: "西藥 ＋ 保健食品",
@@ -75,10 +75,7 @@ export const TASK_GROUPS: TaskGroup[] = [
   {
     id: "lunch_post",
     title: "🍱 中午飯後",
-    tasks: [
-      { id: "lpost_tcm1", label: "中藥粉" },
-      { id: "lpost_tcm2", label: "中藥活血" },
-    ],
+    tasks: [{ id: "lpost_tcm2", label: "中藥活血" }],
   },
   {
     id: "dinner_pre",
@@ -96,7 +93,6 @@ export const TASK_GROUPS: TaskGroup[] = [
     tasks: [
       { id: "dpost_fiber", label: "膳食纖維 ＋ 蛋白牛奶" },
       { id: "dpost_tcm1", label: "中藥消腫" },
-      { id: "dpost_tcm2", label: "中藥粉" },
       { id: "dpost_nose", label: "溫水洗鼻子" },
       {
         id: "dpost_medicine",
