@@ -196,7 +196,7 @@ export function msg8am(): object {
     altText: "早安！早餐飯前請記得量血壓、吃藥 💊",
     headerEmoji: "🌅",
     headerTitle: "早安！早餐飯前",
-    headerSubtitle: "08:00　量血壓血糖 & 服藥",
+    headerSubtitle: "06:30　量血壓血糖 & 服藥",
     headerColor: c,
     bodyContents: [
       taskItem("熱毛巾敷臉 ＋ 表情練習", c),
@@ -220,7 +220,7 @@ export function msg9am(): object {
     altText: "吃飽沒？早餐飯後記得吃藥 ☕",
     headerEmoji: "☕",
     headerTitle: "吃飽沒？早餐飯後",
-    headerSubtitle: "09:00　飯後用藥",
+    headerSubtitle: "07:30　飯後用藥",
     headerColor: c,
     bodyContents: [
       taskItem("膳食纖維 ＋ 蛋白牛奶", c),

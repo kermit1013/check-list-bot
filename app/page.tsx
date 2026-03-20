@@ -140,6 +140,7 @@ export default function HomePage() {
   const [todayDate, setTodayDate] = useState("");
   const [exporting, setExporting] = useState(false);
   const inputTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hasScrolledRef = useRef(false);
 
   const handleExport = useCallback(async (days: number = 30) => {
     setExporting(true);
@@ -187,14 +188,17 @@ export default function HomePage() {
 
   // Scroll to anchor after checklist has loaded and DOM is rendered
   useEffect(() => {
-    if (!checklist) return;
+    if (!checklist || hasScrolledRef.current) return;
     const hash = window.location.hash; // e.g. "#lunch_pre"
     if (!hash) return;
     const id = hash.replace("#", "");
     // Small delay ensures the section DOM nodes are fully painted
     const timer = setTimeout(() => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        hasScrolledRef.current = true;
+      }
     }, 200);
     return () => clearTimeout(timer);
   }, [checklist]);
